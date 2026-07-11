@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  
   "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
-
+    "dev": "node_modules\\.bin\\ts-node.cmd src\\index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
+
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
