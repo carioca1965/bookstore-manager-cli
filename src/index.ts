@@ -1,3 +1,4 @@
+
 import { connectDatabase } from "./config/database";
 import { AuthorController } from "./controllers/AuthorController";
 
@@ -8,12 +9,12 @@ async function main() {
 
   await connectDatabase();
 
-  const authorController = new AuthorController();
+  const authorController = new AuthorController()
+  
+  await authorController.delete(2);
 
-  await authorController.create({
-    name: "Carlos Eduardo",
-    nationality: "Brasileiro",
-  });
-}
+    await authorController.findAll();
+  }
+
 
 main();
