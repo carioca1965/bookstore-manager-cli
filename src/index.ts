@@ -1,6 +1,5 @@
-
 import { connectDatabase } from "./config/database";
-import { AuthorController } from "./controllers/AuthorController";
+import { BookController } from "./controllers/BookController";
 
 async function main() {
   console.log("=======================================");
@@ -9,12 +8,11 @@ async function main() {
 
   await connectDatabase();
 
-  const authorController = new AuthorController()
+  const bookController = new BookController();
+
+  await bookController.delete(1);
+  await bookController.findAll();
   
-  await authorController.delete(2);
-
-    await authorController.findAll();
-  }
-
+}
 
 main();
