@@ -1,5 +1,5 @@
 import { connectDatabase } from "./config/database";
-import { ClientController } from "./controllers/ClientController";
+import { LoanController } from "./controllers/LoanController";
 
 async function main() {
   console.log("=======================================");
@@ -8,12 +8,14 @@ async function main() {
 
   await connectDatabase();
 
-  const clientController = new ClientController();
+  const loanController = new LoanController();
 
-await clientController.delete(1);
-await clientController.findAll();
-    
+  await loanController.create({
+    client_id: 2,
+    book_id: 2,
+    loan_date: new Date(),
+    return_date: null
+  });
 }
-
 
 main();
