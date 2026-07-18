@@ -10,7 +10,12 @@ async function main() {
 
   const loanController = new LoanController();
 
-  await loanController.returnLoan(5);
+  await loanController.create({
+    client_id: 2,
+    book_id: 2,
+    loan_date: new Date(),
+    return_date: null
+  });
 }
 
 main();
