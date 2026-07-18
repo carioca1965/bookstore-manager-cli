@@ -88,4 +88,25 @@ async update(id: number, book: Book): Promise<Book | null> {
   return result.rowCount !== null && result.rowCount > 0;
 }
 
+async decreaseStock(id: number): Promise<void> {
+  const query = `
+    UPDATE books
+    SET quantity = quantity - 1
+    WHERE id = $1;
+  `;
+
+  await pool.query(query, [id]);
+}
+
+ async increaseStock(id: number): Promise<void> {
+  const query = `
+    UPDATE books
+    SET quantity = quantity + 1
+    WHERE id = $1;
+  `;
+
+  await pool.query(query, [id]);
+}
+
+
 }

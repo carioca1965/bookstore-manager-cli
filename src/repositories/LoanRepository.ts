@@ -26,5 +26,24 @@ export class LoanRepository {
 
     return result.rows[0];
   }
+  async returnLoan(id: number): Promise<Loan | null> {
+  const query = `
+    UPDATE loans
+    SET
+      status = 'DEVOLVIDO',
+      return_date = NOW()
+    WHERE id = $1
+      AND status = 'EMPRESTADO'
+    RETURNING *;
+  `;
+
+  const result = await pool.query(query, [id]);
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  return result.rows[0];
+}
 
 }

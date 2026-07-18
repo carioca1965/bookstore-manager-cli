@@ -3,5 +3,6 @@ export interface Book {
   title: string;
   isbn: string;
   publication_year: number;
+  quantity: number;
   author_id: number;
 }

@@ -14,4 +14,15 @@ export class LoanController {
       console.error("❌ Erro ao realizar empréstimo:", error);
     }
   }
+
+  async returnLoan(id: number): Promise<void> {
+    try {
+      const returnedLoan = await this.service.returnLoan(id);
+
+      console.log("\n📖 Livro devolvido com sucesso!");
+      console.table(returnedLoan);
+    } catch (error) {
+      console.error("❌ Erro ao devolver livro:", error);
+    }
+  }
 }
